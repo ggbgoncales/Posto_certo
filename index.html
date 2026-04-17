@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posto Certo — Compare e Economize</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar"><!--fica no topo contem link e logo -->
+    <div class="container nav-inner">
+      <a href="#" class="logo">⛽ Posto<strong>Certo</strong></a>
+      <nav class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#postos">Postos</a>
+        <a href="#comparador">Comparar</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#sugestao">Sugerir</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio"><!--agrupar botões-->
+    <div class="container">
+      <h1>Encontre o combustível <span class="highlight">mais barato da cidade.</span></h1>
+      <p>Compare preços em tempo real, confira avaliações e economize toda semana.</p>
+      <div class="hero-actions"> #agrupar os botões 
+        <a href="#postos" class="btn btn-primary">Ver postos agora</a>
+        <a href="#comparador" class="btn btn-outline">Comparar preços</a>
+      </div>
+      <div class="hero-stats"> <!--quantidade de postos -->
+        <div class="stat"><strong>12</strong><span>Postos</span></div>
+        <div class="stat"><strong>3</strong><span>Combustíveis</span></div>
+        <div class="stat"><strong>4.4★</strong><span>Avaliação média</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="postos-section" id="postos"><!--organiza a seção de postos -->
+    <div class="container">
+      <p class="section-label">Postos cadastrados</p>
+      <h2>Encontre o melhor posto <span class="highlight">para você.</span></h2>
+      <div class="filtros">
+        <div class="filtro-group">
+          <label for="ordenar">Ordenar por:</label>
+          <select id="ordenar">
+            <option value="avaliacao">Melhor avaliação</option>
+            <option value="gasolina">Menor gasolina</option>
+            <option value="etanol">Menor etanol</option>
+            <option value="diesel">Menor diesel</option>
+            <option value="nome">Nome (A–Z)</option>
+          </select>
+        </div>
+      </div>
+      <div class="postos-grid" id="postosGrid"></div>
+    </div>
+  </section>
+
+  <section class="comparador-section" id="comparador"><!--seleção de postos botão comparar-->
+    <div class="container">
+      <p>Comparador de preços</p>
+      <h2>Veja tudo lado a lado.</h2>
+      <p class="section-desc">Selecione até 3 postos para comparar preços e avaliações.</p>
+      <div class="comp-selects">
+        <div><label>Posto 1</label><select id="comp1"><option value="">— Selecione —</option></select></div>
+        <div class="comp-vs">VS</div>
+        <div><label>Posto 2</label><select id="comp2"><option value="">— Selecione —</option></select></div>
+        <div class="comp-vs">VS</div>
+        <div><label>Posto 3 <small>(opcional)</small></label><select id="comp3"><option value="">— Selecione —</option></select></div>
+      </div>
+      <button class="btn btn-primary" id="btnComparar">Comparar agora</button>
+      <div id="compResultado"></div>
+    </div>
+  </section>
+
+  <section class="avaliacoes-section" id="avaliacoes"> <!--comentarios de usuario,notas e opinião-->
+    <div class="container">
+      <p class="section-label">Avaliações</p>
+      <h2>O que outros motoristas estão dizendo.</h2>
+      <div class="avaliacoes-grid" id="avaliacoesGrid"></div>
+    </div>
+  </section>
+
+  <section class="sugestao-section" id="sugestao"><!--recebe sujestão-->
+    <div class="container">
+      <h2>Sugira um posto ou envie uma avaliação.</h2>
+      <form class="sugestao-form" id="sugestaoForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="nome">Seu nome *</label>
+            <input type="text" id="nome" placeholder="Ex: João Silva" required />
+            <span class="field-error" id="err-nome"></span>
+          </div>
+          <div class="field">
+            <label for="email">E-mail (opcional)</label>
+            <input type="email" id="email" placeholder="joao@email.com" />
+          </div>
+          <div class="field">
+            <label for="posto">Nome do posto *</label>
+            <input type="text" id="posto" placeholder="Ex: Posto Estrela" required />
+            <span class="field-error" id="err-posto"></span>
+          </div>
+          <div class="field">
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" placeholder="Rua, número, bairro" />
+          </div>
+          <div class="field field-full">
+            <label for="mensagem">Sua avaliação *</label>
+            <textarea id="mensagem" rows="4" placeholder="Descreva sua experiência..." required></textarea>
+            <span class="field-error" id="err-mensagem"></span>
+          </div>
+          <div class="field field-full">
+            <label>Nota geral:</label> <!--as notas por estrela-->
+            <div class="star-picker">
+              <button type="button" class="star-btn" data-v="1">★</button>
+              <button type="button" class="star-btn" data-v="2">★</button>
+              <button type="button" class="star-btn" data-v="3">★</button>
+              <button type="button" class="star-btn" data-v="4">★</button>
+              <button type="button" class="star-btn" data-v="5">★</button>
+            </div>
+            <input type="hidden" id="notaInput" value="0" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar sugestão</button>
+        <div class="form-toast" id="formSuccess">✅ Obrigado! Sua sugestão foi enviada com sucesso.</div>
+      </form>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
