@@ -1,6 +1,8 @@
+/*margens*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+/*cores*/
 :root {
   --amber: #da3d3d;
   --green: #22C55E;
@@ -14,31 +16,39 @@ html { scroll-behavior: smooth; }
   --r: 12px;
 }
 
+/*principal*/
 body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font-family: inherit; cursor: pointer; }
 
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
+/* Buttons, tam, font*/ 
 .btn { display: inline-block; padding: 11px 22px; border-radius: var(--r); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; border: none; transition: all .2s; }
 .btn-primary { background: var(--amber); color: #0C0D10; }
 .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
 .btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,.2); }
 .btn-outline:hover { background: var(--surface); }
 
+/* define texto das seleçoes */
 .section-label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
 h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
 .highlight { color: var(--amber); }
 .section-desc { color: var(--muted); margin-bottom: 32px; }
 
+/* topo naveg */
 .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(12,13,16,.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
 .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 600; }
 .logo strong { color: var(--amber); }
 .nav-links { display: flex; gap: 4px; }
-.nav-links a { padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s, background .15s; }
-.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-links a, .mobile-menu a { padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s, background .15s; }
+.nav-links a:hover, .mobile-menu a:hover { color: var(--text); background: var(--surface); }
+.hamburger { display: none; background: none; border: none; color: var(--text); font-size: 22px; }
+.mobile-menu { display: none; flex-direction: column; padding: 8px 16px 16px; gap: 2px; border-top: 1px solid var(--border); background: rgba(12,13,16,.98); }
+.mobile-menu.open { display: flex; }
 
+/* Hero , centraliza, paragrafo, deixa o tit*/
 .hero { padding: 130px 0 80px; background: var(--bg2); text-align: center; }
 .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; }
 .hero p { font-size: 17px; color: var(--muted); margin-bottom: 32px; }
@@ -48,12 +58,14 @@ h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3.5vw, 
 .stat strong { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--amber); }
 .stat span { font-size: 13px; color: var(--muted); }
 
+/* Define o estilo página:*/
 .sobre { padding: 80px 0; background: var(--bg); }
 .postos-section { padding: 80px 0; background: var(--bg2); }
 .comparador-section { padding: 80px 0; background: var(--bg); }
 .avaliacoes-section { padding: 80px 0; background: var(--bg2); }
 .sugestao-section { padding: 80px 0; background: var(--bg); }
 
+/* layouts dos cards*/
 .sobre-grid, .postos-grid, .avaliacoes-grid { display: grid; gap: 18px; margin-top: 32px; }
 .sobre-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .postos-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
@@ -67,6 +79,7 @@ h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3.5vw, 
 .sobre-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
 .sobre-card p { font-size: 14px; color: var(--muted); }
 
+/* Posto cards de cada item */
 .posto-card.destaque-card { border-color: rgba(245,166,35,.35); }
 .badge-destaque { display: none; font-size: 11px; font-weight: 700; background: var(--amber); color: #0C0D10; padding: 2px 8px; border-radius: 20px; margin-bottom: 4px; }
 .destaque-card .badge-destaque { display: inline-block; }
@@ -95,6 +108,7 @@ h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3.5vw, 
 .servicos-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .srv-tag { font-size: 11px; background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; color: var(--muted); }
 
+/* Filtros */
 .filtros { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; margin: 28px 0; }
 .filtro-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .filtro-group label { font-size: 13px; color: var(--muted); font-weight: 600; }
@@ -104,6 +118,7 @@ h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3.5vw, 
 select { padding: 7px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 13px; outline: none; }
 select:focus { border-color: var(--amber); }
 
+/* Comparador */
 .comp-selects { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 24px; }
 .comp-selects > div { display: flex; flex-direction: column; gap: 6px; }
 .comp-selects label { font-size: 13px; color: var(--muted); font-weight: 600; }
@@ -119,6 +134,7 @@ select:focus { border-color: var(--amber); }
 .comp-table td.pior { color: var(--red); }
 .melhor-label { display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 800; background: var(--green); color: #0C0D10; padding: 1px 6px; border-radius: 4px; }
 
+/* Avaliações */
 .aval-card { display: flex; flex-direction: column; gap: 12px; padding: 22px; }
 .aval-top { display: flex; align-items: flex-start; gap: 10px; }
 .aval-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(245,166,35,.15); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--amber); flex-shrink: 0; }
@@ -130,6 +146,7 @@ select:focus { border-color: var(--amber); }
 .aval-posto-ref span { color: var(--text); }
 .aval-data { margin-left: auto; font-size: 11px; }
 
+/* Formulário */
 .sugestao-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 36px; max-width: 860px; margin-top: 32px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
@@ -146,5 +163,6 @@ select:focus { border-color: var(--amber); }
 .form-toast { display: none; margin-top: 18px; padding: 14px 18px; background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); border-radius: var(--r); color: var(--green); font-size: 14px; }
 .form-toast.show { display: block; }
 
+/* Footer rodape*/
 footer { padding: 28px 0; background: var(--bg2); border-top: 1px solid var(--border); text-align: center; }
 footer p { font-size: 13px; color: var(--muted); }
